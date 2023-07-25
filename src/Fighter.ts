@@ -54,11 +54,11 @@ export default class Fighter {
     }
   }
 
-  private getDefense(): number {
-    if (this.shield !== null) {
-      return this.defense + this.shield.getProtection();
+  private getDefense(defender: Fighter): number {
+    if (defender.shield !== null) {
+      return defender.defense + defender.shield.getProtection();
     } else {
-      return this.defense;
+      return defender.defense;
     }
   }
 }
