@@ -7,20 +7,22 @@ export default class Fighter {
   private strength: number;
   private defense: number;
   private life: number;
-  private weapon: Weapon | null = null;
-  private shield: Shield | null = null;
+  private weapon: Weapon | null;
+  private shield: Shield | null;
   constructor(name: string, strength: number, defense: number) {
     this.name = name;
     this.strength = strength;
     this.defense = defense;
     this.life = MAX_LIFE;
+    this.weapon = null;
+    this.shield = null;
   }
   // Lancer un combat
   public attack(defender: Fighter) {
     // calculer les points d'attaques
     const attackPoints = this.getRandomInt(this.getDamage());
     // calculer le nombre des dommages
-    const damages = Math.max(attackPoints - defender.getDefense(), 0);
+    const damages = Math.max(attackPoints - defender.getDefense(this), 0);
     // calculer les nombres de vies
     defender.life = Math.max(defender.life - damages, 0);
   }
